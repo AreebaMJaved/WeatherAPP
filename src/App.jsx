@@ -1,9 +1,9 @@
 import React from 'react'
-import WeatherApp from './pages/WeatherApp'
+import Weatherapp from './pages/Weatherapp'
 const App = () => {
   return (
     <div>
-      <WeatherApp />
+      <Weatherapp />
     </div>
   )
 }
