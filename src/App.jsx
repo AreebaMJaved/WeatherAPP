@@ -1,9 +1,9 @@
 import React from 'react'
-import PanelAI from './pages/PanelAI'
+import WeatherApp from './pages/WeatherApp'
 const App = () => {
   return (
     <div>
-      <PanelAI />
+      <WeatherApp />
     </div>
   )
 }

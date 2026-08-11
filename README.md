@@ -1,209 +1,123 @@
-# 🎙️ Panel AI
+# 🌦️ SkyScope — Weather App
 
-### The interview panel is waiting.
+A weather app that doesn't just show numbers — the whole screen relights itself to match what's actually happening outside, and you can drag through the next 24 hours instead of just reading a static list.
 
-Face a **Technical Lead**, an **HR Manager**, and a **Senior Manager** — back to back, live, streamed in real time — then get scored honestly by an AI verdict at the end.
+Built with React + Vite + Tailwind CSS. No backend, no API keys, no signup — powered entirely by [Open-Meteo](https://open-meteo.com/), which is free and doesn't require an account.
 
-<p align="center">
-  <img alt="React" src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
-  <img alt="Vite" src="https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
-  <img alt="Groq" src="https://img.shields.io/badge/Groq-Llama%203.3%2070B-F55036?style=for-the-badge&logo=lightning&logoColor=white" />
-  <img alt="Vercel" src="https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
-  <img alt="License" src="https://img.shields.io/badge/License-MIT-4A5A40?style=for-the-badge" />
-</p>
-
-<p align="center">
-  <img alt="Made with love" src="https://img.shields.io/badge/Made%20with-%E2%9D%A4%EF%B8%8F-red?style=flat-square" />
-  <img alt="Status" src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square" />
-  <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-blueviolet?style=flat-square" />
-</p>
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white&style=flat-square)
+![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white&style=flat-square)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-v4-06B6D4?logo=tailwindcss&logoColor=white&style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-lightgrey?style=flat-square)
 
 ---
 
-## 📖 About
+## ✨ What makes it different
 
-**Panel AI** is a mock interview simulator that puts you in front of three distinct AI personas, one after another — each with their own personality, question style, and pressure level. It's not a chatbot. It's a rehearsal.
+Most weather apps are a static card with a number on it. This one has two things I wanted to build myself instead of copying the usual template:
 
-At the end, all three interviewers' impressions are aggregated into one **panel verdict**: a radar chart of your scores, your strengths, your weak spots, and an honest overall read.
+### 🌧️ A sky that's actually alive
+There's a `<canvas>` layer sitting behind the UI, driven by `requestAnimationFrame`, that renders real rain streaks, drifting snow, fog haze, or soft floating clouds — picked based on the *actual* weather code returned by the API. Wind speed changes how fast and how sideways the particles drift. Thunderstorms get the occasional lightning flash. It's all hand-rolled canvas physics, no animation library.
 
-> Built to show off real React patterns — state machines, streaming UI, custom hooks, and live scoring — wrapped in a project people actually want to use.
+### 👆 Drag through the day
+Instead of a boring hour-by-hour list, there's an SVG temperature curve you can **click-and-drag or swipe** across. As you move, it snaps to the nearest hour and updates the reading live — like scrubbing a video timeline, but for tomorrow's weather.
+
+### 🌅 Sunrise-to-sunset arc
+A small arc tracks exactly where "now" sits between sunrise and sunset, with the sun/moon position moving along it in real time.
+
+### 🎨 Condition-aware theming
+13 hand-picked color themes (clear / cloudy / rain / snow / storm / fog × day / night) — the gradient, icon, and accent color all swap automatically depending on what's happening right now in the searched city.
 
 ---
 
-## ✨ Features
+## 🖥️ Tech Stack
 
-| 🎯 Feature | 📝 Description |
+| Layer | Tool |
 |---|---|
-| 🧑‍💼 **3 Distinct Personas** | Technical Lead, HR Manager, Senior Manager — each with a different tone and question style |
-| ⚡ **Live Streaming Responses** | Questions type themselves out in real time via streamed API responses |
-| ⏱️ **Timed Answers** | 90-second countdown per question, auto-submits on timeout |
-| 📊 **Radar Chart Scoring** | Confidence, clarity, technical depth, communication, and problem-solving — visualized |
-| 💾 **Persistent History** | Past interviews saved locally, browsable anytime |
-| 🎨 **Custom Design System** | Hand-picked palette and typography — no default AI-generated look |
-| 🆓 **100% Free to Run** | Powered by Groq's free tier — no card, no paid API required |
-| 🔒 **Secure by Design** | API key never touches the browser — routed through a serverless function |
+| Framework | React 18 (Vite) |
+| Styling | Tailwind CSS v4 |
+| Icons | [lucide-react](https://lucide.dev/) |
+| Weather data | [Open-Meteo](https://open-meteo.com/) (Forecast + Geocoding API — free, no key) |
+| Animation | Native Canvas API + `requestAnimationFrame` (no external animation lib) |
 
 ---
 
-## 🛠️ Tech Stack
+## 📦 Getting Started
 
-<p align="left">
-  <img alt="React" src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" />
-  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" />
-  <img alt="Vite" src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white" />
-  <img alt="Vercel Functions" src="https://img.shields.io/badge/Vercel_Serverless-000000?style=flat-square&logo=vercel&logoColor=white" />
-  <img alt="Recharts" src="https://img.shields.io/badge/Recharts-22B5BF?style=flat-square" />
-  <img alt="Groq" src="https://img.shields.io/badge/Groq_API-F55036?style=flat-square" />
-</p>
+### 1. Clone and install
+```bash
+git clone https://github.com/your-username/skyscope-weather.git
+cd skyscope-weather
+npm install
+```
 
-- **React 18** — hooks-driven UI, no class components
-- **Vite** — dev server + build tool
-- **Recharts** — radar chart for the final verdict
-- **Groq API** (`llama-3.3-70b-versatile`) — free-tier LLM inference, OpenAI-compatible
-- **Vercel Serverless Functions** — keeps the API key server-side, zero CORS issues
+### 2. Run locally
+```bash
+npm run dev
+```
+App will be running at `http://localhost:5173`
 
----
+### 3. Build for production
+```bash
+npm run build
+```
+Outputs a static `dist/` folder — deployable anywhere (Vercel, Netlify, GitHub Pages, etc.)
 
-## 🧠 React Concepts Used
-
-| Concept | Where |
-|---|---|
-| `useReducer` | Interview state machine (`setup → question → answering → evaluating → results`) |
-| `useState` | Local UI state (role selection, answer text, view toggles) |
-| `useEffect` | Kicking off streamed API calls per round |
-| `useRef` | Guarding against duplicate API calls, tracking countdown expiry |
-| `useCallback` | Stable history-append function |
-| Custom Hooks | `usePersistentHistory()`, `useCountdown()` |
-| Streaming UI | Manual `ReadableStream` + SSE parsing for the typing effect |
-| Controlled Components | Role picker, custom-role input, answer textarea |
+No `.env` file, no API keys, no config needed. It just works out of the box.
 
 ---
 
-## 🎨 Design System
-
-**Palette — "Modern": charcoal, warm gray, sage-cream**
-
-| Swatch | Name | Hex |
-|---|---|---|
-| ⬛ | Charcoal Black | `#14161A` |
-| ◾ | Warm Gray | `#6E7178` |
-| 🟩 | Sage Cream | `#EDF0E1` |
-| ⬜ | Soft White | `#F7F8F2` |
-| 🌿 | Moss (accent) | `#4A5A40` |
-
-**Typography**
-
-- **Display:** [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) — headings
-- **Body:** [Inter](https://fonts.google.com/specimen/Inter) — everything else
-- **Mono:** [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) — timers, scores, labels
-
----
-
-## 📂 Project Structure
+## 📁 Project Structure
 
 ```
-panel-ai/
-├── api/
-│   └── chat.js          # Vercel serverless function — proxies Groq, keeps key server-side
+skyscope-weather/
 ├── src/
-│   └── PanelAI.jsx       # Main app component
-├── package.json
+│   ├── App.jsx          # Renders WeatherApp
+│   ├── WeatherApp.jsx   # Main component — search, canvas sky, hourly scrubber
+│   ├── main.jsx         # Entry point
+│   └── index.css        # Tailwind import
 ├── vite.config.js
-├── .env                  # local only — GROQ_API_KEY (never committed)
-├── .gitignore
+├── package.json
 └── README.md
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🔍 How the data flows
 
-### 1️⃣ Clone the repo
+1. User types a city name → hits **Geocoding API** to resolve it to lat/lng
+2. Coordinates go to the **Forecast API** for current conditions, today's hourly temps, and daily sunrise/sunset
+3. Weather code (WMO standard) gets mapped to one of 7 condition groups: `clear`, `partly`, `cloudy`, `fog`, `rain`, `snow`, `storm`
+4. That group + whether it's day or night picks a theme and feeds the canvas particle system
+
+---
+
+## 🚀 Deployment
+
+Deploys cleanly to **Vercel** with zero config — it auto-detects the Vite build:
 
 ```bash
-git clone https://github.com/your-username/panel-ai.git
-cd panel-ai
+npm i -g vercel
+vercel
 ```
 
-### 2️⃣ Install dependencies
-
-```bash
-npm install
-```
-
-### 3️⃣ Get a free Groq API key
-
-1. Go to [console.groq.com](https://console.groq.com) and sign up — no card required
-2. **API Keys** → **Create API Key**
-3. Copy the key (starts with `gsk_`) — shown only once
-
-### 4️⃣ Set up your environment variable
-
-Create a `.env` file in the project root:
-
-```dotenv
-GROQ_API_KEY=gsk_your_key_here
-```
-
-### 5️⃣ Run locally
-
-```bash
-npm install -g vercel
-vercel dev
-```
-
-This runs the frontend **and** the `/api/chat` serverless function together on one port — no separate backend server needed, no CORS issues.
+Build command: `npm run build` · Output directory: `dist`
 
 ---
 
-## ☁️ Deploying to Vercel
+## 🛣️ Possible next steps
 
-1. Push your repo to GitHub
-2. Go to [vercel.com](https://vercel.com) → **Add New Project** → import your repo
-3. Vercel auto-detects the Vite framework — no config needed
-4. Before deploying, add your environment variable:
-   - **Settings → Environment Variables**
-   - Name: `GROQ_API_KEY`
-   - Value: your `gsk_...` key
-5. Click **Deploy** 🎉
-
-Your app goes live at `your-project.vercel.app` — frontend and API on the same domain, so there's zero CORS friction in production.
-
-> ⚠️ **Never** prefix this variable with `VITE_` — that would expose it to the browser. Keep it as plain `GROQ_API_KEY`, read only inside `api/chat.js`.
+- [ ] 7-day forecast view
+- [ ] Geolocation ("use my current location")
+- [ ] Saved / favorite cities
+- [ ] Unit toggle (°C / °F)
+- [ ] Air quality index
 
 ---
 
-## 🔐 Security Notes
+## 📄 License
 
-- ✅ API key lives only in `api/chat.js` (server-side) — never shipped to the browser
-- ✅ `.env` is gitignored — never commit real keys
-- ✅ Frontend calls a relative `/api/chat` path — same-origin, no CORS exposure
-- ❌ Don't hardcode keys directly inside `PanelAI.jsx` for any real deployment
+MIT — use it, modify it, ship it.
 
 ---
 
-## 🗺️ Roadmap
-
-- [ ] 🎙️ Voice input via Web Speech API
-- [ ] 🌗 Dark mode toggle
-- [ ] 📄 Export interview transcript as PDF
-- [ ] 🌍 Multi-language interview support
-- [ ] 🔁 Follow-up questions based on previous answers
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
-
----
-
-## 📜 License
-
-Distributed under the **MIT License**. See `LICENSE` for details.
-
----
-
-<p align="center">
-  Built with ⚛️ React, ⚡ Groq, and a little bit of interview anxiety.
-</p>
+<p align="center">Built with React, a lot of canvas math, and zero API keys.</p>
